@@ -157,6 +157,15 @@
                           
                         </ul>
                      </li>
+
+
+                     <li class="icon_menu   "  title="">
+                        <a href="{{route('parametre_app')}}" >
+                        <span class="material-icons">settings</span>
+                        </a>
+                        Parametre APP
+                      
+                     </li>
                      
                      <li class="icon_menu " data-bs-toggle="tooltip" data-bs-placement="top" title="">
                         

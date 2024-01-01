@@ -207,10 +207,24 @@ class InventaireController extends Controller
 
             for ($i = 0;$i < count($request->champs);$i++)
             {
-                $value_field = new Value_field();
-                $value_field->value = $request->champs[$i];
-                $value_field->id_field_inventaire = $field_table_inventaire->id; 
-                $value_field->save();
+                if( $request->nom_champs[$i] == "N_BOITE" ){
+
+                    $value_field = new Value_field();
+                    $value_field->value = $request->champs[$i];
+                    $value_field->n_boite = 1;
+                    $value_field->id_field_inventaire = $field_table_inventaire->id; 
+                    $value_field->save();
+
+
+                } else {
+
+                    $value_field = new Value_field();
+                    $value_field->value = $request->champs[$i];
+                    $value_field->id_field_inventaire = $field_table_inventaire->id; 
+                    $value_field->save();
+
+                }
+             
             }
         }
 

@@ -219,19 +219,27 @@
       
                                  
       
-                                          @else 
+                                     @else 
 
                                              @if($attributs[$i]->nom_champs == "dispose d'une version physique" )
                                                 <input type="text"  value="{{$attributs[$i]->id}}" hidden>
                                                 <input type="text"  class="form-control" value="{{$attributs[$i]->valeur}}" disabled>
+
+                                             @elseif($attributs[$i]->nom_champs == "Numero boite" )
+
+                                                <input type="text" name="id[]" value="{{$attributs[$i]->id}}" hidden>
+                                                <input type="text" id="n_boite" value="{{$attributs[$i]->id}}"  hidden >
+                                                <input type="text" name="valeur[]" class="form-control" value="{{$attributs[$i]->valeur}}" >
                                              
                                              @else
+
+                                             
                                                 <input type="text" name="id[]" value="{{$attributs[$i]->id}}" hidden>
                                                 <input type="text" name="valeur[]" class="form-control" value="{{$attributs[$i]->valeur}}" >
                                              
                                              @endif
 
-                                          @endif
+                                     @endif 
                                  
                                     </td>
       

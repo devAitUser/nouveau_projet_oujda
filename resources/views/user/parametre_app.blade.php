@@ -1,10 +1,10 @@
 <html lang="en">
    <head>
       <meta charset="utf-8">
-      <link rel="stylesheet" href="http://localhost/projet_oujda/assets/css/style.css">
-      <link rel="icon" href="http://localhost/projet_oujda/assets/css/style.css">
-      <link rel="stylesheet" href="http://localhost/projet_oujda/assets/img/favicon-32x32.png">
-      <link rel="shortcut icon" type="image/x-icon" href="http://localhost/projet_oujda/assets/img/favicon-32x32.png">
+      <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+      <link rel="icon" href="{{ asset('assets/css/style.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/img/favicon-32x32.png') }}">
+      <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon-32x32.png') }}"/>
       <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,14 +13,14 @@
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
       <style>
       </style>
-      <script src="http://localhost/projet_oujda/assets/js/home_app.js"></script>
+      <script src="{{ asset('assets/js/home_app.js') }}"></script>
       <!-- CSRF Token -->
-      <meta name="csrf-token" content="IXB74SSakpushjV5a0WVom9NZLariWXa3ChhK56D">
-      <title>Laravel</title>
+      <meta name="csrf-token" content="{{ csrf_token() }}">
+      <title>tableau de bord</title>
       <script type="text/javascript">
-         var APP_URL = "http:\/\/localhost\/projet_oujda"
+         var APP_URL = {!! json_encode(url('/')) !!}
          
-      </script>
+         </script>
    </head>
    <body cz-shortcut-listen="true">
       <!-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -238,8 +238,8 @@
                <div style="    margin-top: 60px;" ></div>
                <div class="panel_view_details">
                   <div class="table_p">
-                     <form method="post" action="http://localhost/projet_oujda/choose_project">
-                        <input type="hidden" name="_token" value="IXB74SSakpushjV5a0WVom9NZLariWXa3ChhK56D">      
+                     <form >
+                        
                         <div class="row">
                            <div class="col-md-8 panel_create_dossier ">
                               <div class="row panel_add">
@@ -248,7 +248,7 @@
                                        <div class="col-sm-6">
                                        <?php if($user->gerer_archives){     ?>
                                           <ul>
-                                             <li class="link_menu__left" onclick="window.open('http://localhost/projet_oujda/lien_parametre/1', '_self');">
+                                             <li class="link_menu__left" onclick="window.open('<?php echo url('/').'/lien_parametre/1'   ?>', '_self');">
                                                 <span class="icon_menu_left">
                                                 <img src="{{ asset('img_app/gere_archives.png') }}" style="width: 33px;">
                                                 </span>
@@ -261,7 +261,7 @@
                                        <div class="col-sm-6">
                                        <?php if($user->config_solution){     ?>
                                           <ul>
-                                             <li class="link_menu__left" onclick="window.open('http://localhost/projet_oujda/lien_parametre/2', '_self');">
+                                             <li class="link_menu__left" onclick="window.open('<?php echo url('/').'/lien_parametre/2'   ?>', '_self');">
                                                 <span class="icon_menu_left">
                                                 <img src= "{{ asset('img_app/setting.png') }}"  style="width: 33px;">
                                                 </span>

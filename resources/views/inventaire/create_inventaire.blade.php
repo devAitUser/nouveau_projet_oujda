@@ -180,9 +180,11 @@
                            <td> 
                             @if ($field_inventaire->type_champs == 'Text')
                                <input type="text" class="form-control" name="champs[]" required>  
+                               <input type="text" class="form-control" name="nom_champs[]" value='{{$field_inventaire->nom_champs}}' hidden>  
                             @endif
                             @if ($field_inventaire->type_champs == 'Date')
                                <input type="date" class="form-control" name="champs[]" required> 
+                               <input type="text" class="form-control" name="nom_champs[]" value='{{$field_inventaire->nom_champs}}' hidden>  
                             @endif
                             @if ($field_inventaire->type_champs == 'cote')
                             <div class="block_select">
@@ -202,6 +204,8 @@
                               <select name="champs[]" id="select_code_topo" class="form-select" onchange="" >
                         
                               </select>
+
+                              <input type="text" class="form-control" name="nom_champs[]" value='{{$field_inventaire->nom_champs}}' hidden>  
 
 
                             </div>

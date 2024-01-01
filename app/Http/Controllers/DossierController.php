@@ -35,6 +35,9 @@ use App\Models\Field_table_inventaire;
 use App\Models\Inventaire_table;
 
 
+use App\Models\Value_field;
+
+
 
 
 
@@ -1341,13 +1344,11 @@ class DossierController extends Controller
 
             $id_dossier = $request->id_dossier;
 
+            $user = Auth::user();
+
 
             $resulta= false ; 
             $nom_inventaire = '';
-
-
-
-
             $dossier = Dossier_has_inventaire::where("dossier_id", $id_dossier )->get();
 
 
@@ -1361,13 +1362,71 @@ class DossierController extends Controller
                 $inventaire = Inventaire_table::find($line->inventaire_id);
                 $nom_inventaire = $inventaire->nom ;
             }
+            if( $resulta == false){
+
+                if( $request->numero_dossier != '' ){
+
+                   
+
+                }
             
 
-        
+            }
+            
+
+            $projet = Organigramme::find($user->projet_select_id);
+            
+                       
 
        
 
            return Response()->json([ "etat" => $resulta , "nom_inventaire" => $nom_inventaire ]);
 
     }
+    public function pro(){
+        $user = Auth::user();
+
+        $lignes_trouvés=[];
+        $projet = Organigramme::find($user->projet_select_id);
+
+       $les_inventaires =     Inventaire_table::where("id_organigrammes", $projet->id)->get();
+
+       for($i=0;$i<count($les_inventaires);$i++){
+
+        
+          $les_lignes = Field_table_inventaire::where("inventaire_id", $les_inventaires[$i]->id)->get();
+
+          for($e=0;$e<count($les_lignes);$e++){
+
+
+            $attributs_lignes = Value_field::where([
+                "n_boite" => 1,
+                "value" => 2024,
+                "id_field_inventaire" => $les_lignes[$e]->id,
+            ])->first();
+
+            $titre_champs='';
+            if ( !is_null($attributs_lignes) ) { 
+                $les_champs = Value_field::where("id_field_inventaire", $les_lignes[$e]->id   )->get(); 
+                for($r=0;$r<count($les_champs);$r++){
+                    $titre_champs .= $les_champs[$r]->value ; 
+                    if( $r != count($les_champs)-1 ){
+                        $titre_champs .=  ' - '; 
+                    }
+                }
+                
+                $lignes_trouvés[] =  array( 'nom_inventaire' => $les_inventaires[$i]->nom  , 'id_line' => $attributs_lignes->id , 'les_champs' =>  $titre_champs  );
+              }
+
+          }
+
+
+       
+        }
+
+
+
+        dd($lignes_trouvés)  ;
+    }
+
 }

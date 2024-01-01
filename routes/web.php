@@ -331,3 +331,10 @@ Route::post('/import1',[\App\Http\Controllers\InventaireController::class,'impor
 
 Route::get('/recherche_dossier_choix', [App\Http\Controllers\InventaireController::class, 'recherche_dossier_choix'])->name('recherche_dossier_choix');
 
+
+/***********att******/
+Route::get('/pro', [App\Http\Controllers\DossierController::class, 'pro']);
+
+
+
+

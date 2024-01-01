@@ -573,7 +573,14 @@ $(document).ready(function() {
 
 
 
+    var numero_dossier =  "";
 
+    
+
+    if( $('#n_boite').length )        
+    {
+       numero_dossier =  $('#n_boite').val();
+    }
 
     $(".btn_verfication").click(function(){
 
@@ -583,11 +590,13 @@ $(document).ready(function() {
                         'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                     }
                 });
+
                 $.ajax({
                     url: APP_URL+"/api_check_dossier_physique",
                     method: "post",
                     data: {
-                        id_dossier: id_dossier 
+                        id_dossier: id_dossier ,
+                        numero_dossier: numero_dossier ,
                     },
                     success: function(data) {
 

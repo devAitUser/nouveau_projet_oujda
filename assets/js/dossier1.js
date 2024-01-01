@@ -232,10 +232,10 @@ function load_name_File(event, id_file) {
         row_select1 += '<div id="row_boite" class="col-md-12">';
         row_select1 += '<div class="form-group row">';
         row_select1 += ' <label for="colFormLabelSm" class=" text-uppercase col-sm-6 col-form-label col-form-label-sm"> Numero boite   :</label>';
-        row_select1 += '<input type="text" name="nom_champ[]"  value="COTE TOPOGRAPHIQUE" class="d-none"> ';
+        row_select1 += '<input type="text" name="nom_champ[]"  value="Numero boite" class="d-none"> ';
         row_select1 += '<input type="text" name="id_champs[]"  value="00" class="d-none"> ';
         row_select1 += '<input type="text" name="type_champ[]" value="text" class="d-none"> <div class="col-sm-6">';
-        row_select1 += '<input type="text" class="form-control" name="boite">';
+        row_select1 += '<input type="text" class="form-control" name="valeur[]">';
     
         row_select1 += '</div></div>';
         row_select1 += '</div>';
