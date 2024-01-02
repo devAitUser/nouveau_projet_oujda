@@ -585,6 +585,9 @@ $(document).ready(function() {
     $(".btn_verfication").click(function(){
 
 
+        var html_ligne_touve = "";
+
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
@@ -600,13 +603,38 @@ $(document).ready(function() {
                     },
                     success: function(data) {
 
-                        if(data.etat){
+                        if(data.etat_ligne_touvre){
 
-                            $("#resulta_check").html("<h5> le dossier il se trouve dans l'inventaire : "+data.nom_inventaire+" </h5>");
 
-                        }else{
-                            $("#resulta_check").html('<h5> aucune résultat trouvé </h5>');
+                            html_ligne_touve += '<ul class="list-group">';
+                            html_ligne_touve += '<li class="list-group-item">An item</li>';
+
+                            html_ligne_touve += '<li class="list-group-item">A second item</li>';
+                            html_ligne_touve += ' <li class="list-group-item">A third item</li>';
+                            html_ligne_touve += '<li class="list-group-item">A fourth item</li>';
+                            html_ligne_touve += ' <li class="list-group-item">And a fifth one</li>';
+                            html_ligne_touve += '</ul>';
+
+                            $("#resulta_check").html(html_ligne_touve);
+                            console.log(html_ligne_touve);
+
+
+
+                        } else {
+
+
+                            if(data.etat){
+
+                                $("#resulta_check").html("<h5> le dossier il se trouve dans l'inventaire : "+data.nom_inventaire+" </h5>");
+    
+                            }else{
+                                $("#resulta_check").html('<h5> aucune résultat trouvé </h5>');
+                            }
+
+
                         }
+
+                     
 
                        
               
